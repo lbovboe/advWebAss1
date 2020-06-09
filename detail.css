@@ -125,23 +125,38 @@ label #cancel {
 /* Form CSS */
 form {
   margin-left: 50%;
+  margin-right: 10%;
+  height: 100vh;
+  color: #fff;
   font-weight: bold;
-  
+  background: rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 }
-form option, button{
-    font-weight: bold;
-    
+form option,
+button {
+  font-weight: bold;
 }
-button{
-    width: 4rem;
-    height: 3rem;
-    margin-top: 25px;
+button {
+  width: 5rem;
+  height: 3rem;
+  margin-top: 25px;
+  margin-bottom: 30px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #227be3;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 #reset {
-    margin-left: 25%;
+  margin-left: 25%;
 }
-#submit{
-    margin-left: 10%;
+#submit {
+  margin-left: 10%;
 }
 #studentID {
   width: 50%;
@@ -151,25 +166,28 @@ button{
 #fname {
   width: 50%;
   height: 30px;
-  margin-top: 15px;
-  
+  margin-top: 30px;
 }
 #lname {
   width: 50%;
   height: 30px;
-  margin-top: 15px;
+  margin-top: 30px;
 }
 #age {
   width: 25%;
   height: 30px;
-  margin-top: 15px;
+  margin-top: 30px;
 }
-.gender{
-    
-    margin-top: 15px;
+.gender {
+  margin-top: 30px;
 }
 #degree {
   width: 50%;
   height: 50px;
-  margin-top: 15px;
+  margin-top: 30px;
+}
+
+.box {
+  margin-left: 10%;
+  margin-bottom: 30px;
 }
