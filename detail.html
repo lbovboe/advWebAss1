@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive side menu</title>
+    <link rel="stylesheet" href="detail.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+  <body>
+    <input type="checkbox" id="check" />
+    <label for="check">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="sidebar">
+      <header>My menu</header>
+      <a class="active" href="#">
+        <i class="fas fa-qrcode"></i><span>Dashboard</span>
+      </a>
+
+      <a href="#"><i class="fas fa-envelope"></i><span>About Page</span></a>
+      <a href="detail.html"
+        ><i class="fas fa-calendar"></i><span>Enter Detail</span></a
+      >
+      <a href="search.html"
+        ><i class="fas fa-search"></i><span>Search Degree</span></a
+      >
+      <a href="upload.html"
+        ><i class="fas fa-stream"></i><span>Upload Image</span></a
+      >
+    </div>
+
+    <!-- Form for entering details  -->
+    <form action="results.html" method="GET" enctype="multipart/form-data">
+      <div>
+        <label for="studentID">Student ID</label>
+        <input type="text" name="studentID" id="studentID" required />
+      </div>
+      <div>
+        <label for="fname">First Name</label>
+        <input type="text" name="fname" id="fname" required />
+      </div>
+      <div>
+        <label for="lname">Last Name</label>
+        <input type="text" name="lname" id="lname" required />
+      </div>
+      <div>
+        <label for="age">Student Age</label>
+        <input type="number" name="age" id="age" min="1" max="200" step="5" />
+      </div>
+      <div class="gender">
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="male" value="male" />
+        <label for="female">Female</label>
+        <input type="radio" name="gender" id="female" value="female" />
+      </div>
+      <div>
+        <label for="degree">Degree</label>
+        <select name="degree" id="degree" multiple>
+          <option value="art">Art</option>
+          <option value="business">Business</option>
+          <option value="cs">Computer Science</option>
+        </select>
+      </div>
+      <button type="reset" id="reset">Reset</button>
+      <button type="submit" id="submit">Submit</button>
+    </form>
+  </body>
+</html>
