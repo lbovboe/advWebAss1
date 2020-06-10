@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive side menu</title>
+    <link rel="stylesheet" href="search.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+  <body>
+    <input type="checkbox" id="check" />
+    <label for="check">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="sidebar">
+      <header>My menu</header>
+      <a class="active" href="#">
+        <i class="fas fa-qrcode"></i><span>Dashboard</span>
+      </a>
+
+      <a href="index.html"><i class="fas fa-envelope"></i><span>Home Page</span></a>
+      <a href="detail.html"
+        ><i class="fas fa-calendar"></i><span>Enter Detail</span></a
+      >
+      <a href="search.html"
+        ><i class="fas fa-search"></i><span>Search Degree</span></a
+      >
+      <a href="upload.html"
+        ><i class="fas fa-stream"></i><span>Upload Image</span></a
+      >
+    </div>
+
+    <!-- Form for entering details  -->
+
+    <form action="result.html" method="GET" enctype="multipart/form-data">
+      <div class="box">
+          
+        <div>
+          <label for="search">Enter Degree</label>
+          <input type="text" name="search" id="search" required />
+          <button class= "searchBtn" type="submit" id="submit" >Search</button>
+        </div>
+        
+      </div>
+    </form>
+  </body>
+</html>
