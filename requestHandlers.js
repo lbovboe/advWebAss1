@@ -42,6 +42,17 @@ function reqDetail(request, response) {
   response.writeHead(200, { "Content-Type": "text/html" });
   fs.createReadStream("./detail.html").pipe(response);
 }
+function reqSearch(request, response) {
+  console.log("Request handler 'detail' was called.");
+  response.writeHead(200, { "Content-Type": "text/html" });
+  fs.createReadStream("./search.html").pipe(response);
+}
+function reqUploadPage(request, response) {
+  console.log("Request handler 'detail' was called.");
+  response.writeHead(200, { "Content-Type": "text/html" });
+  fs.createReadStream("./uploadPage.html").pipe(response);
+}
+
 function reqStyle(request,response){
   console.log("Request handler 'style' was called.");
   response.writeHead(200, { "Content-Type": "text/css" });
@@ -71,6 +82,8 @@ exports.reqShow = reqShow;
 exports.reqStart = reqStart;
 exports.reqUpload = reqUpload;
 exports.reqDetail = reqDetail;
+exports.reqSearch = reqSearch;
+exports.reqUploadPage = reqUploadPage;
 exports.reqStyle = reqStyle;
 exports.reqBg = reqBg;
 exports.reqForm1 = reqForm1;

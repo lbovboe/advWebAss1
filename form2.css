@@ -6,7 +6,7 @@
   text-decoration: none;
 }
 body {
-  background-image: url(iu4.jpg);
+  background-image: url(/bgImg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -120,4 +120,50 @@ label #cancel {
     opacity: 1;
     visibility: visible;
   }
+}
+
+/* Form CSS */
+form {
+  margin-left: 50%;
+  margin-right: 10%;
+  height: 100vh;
+  color: #fff;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+form option,
+button {
+  font-weight: bold;
+}
+.searchBtn {
+  width: 5rem;
+  height: 3rem;
+  margin-top: 25px;
+  margin-bottom: 30px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #227be3;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 40%;
+}
+form .searchHeader{
+    text-align: center;
+    
+}
+#search{
+  width: 50%;
+  height: 40px;
+  margin-top: 200px;
+  
+}
+.box {
+  margin-left: 10%;
+  margin-bottom: 30px;
 }
