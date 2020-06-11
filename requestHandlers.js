@@ -52,9 +52,27 @@ function reqBg(request,response){
   response.writeHead(200, { "Content-Type": "image/png" });
   fs.createReadStream("./bgImg.png").pipe(response);
 }
+function reqForm1(request,response){
+  console.log("Request handler 'form1 ' for css was called.");
+  response.writeHead(200, { "Content-Type": "text/css" });
+  fs.createReadStream("./form1.css").pipe(response);
+}
+function reqForm2(request,response){
+  console.log("Request handler 'form1 ' for css was called.");
+  response.writeHead(200, { "Content-Type": "text/css" });
+  fs.createReadStream("./form2.css").pipe(response);
+}
+function reqForm3(request,response){
+  console.log("Request handler 'form1 ' for css was called.");
+  response.writeHead(200, { "Content-Type": "text/css" });
+  fs.createReadStream("./form3.css").pipe(response);
+}
 exports.reqShow = reqShow;
 exports.reqStart = reqStart;
 exports.reqUpload = reqUpload;
 exports.reqDetail = reqDetail;
 exports.reqStyle = reqStyle;
 exports.reqBg = reqBg;
+exports.reqForm1 = reqForm1;
+exports.reqForm2 = reqForm2;
+exports.reqForm3 = reqForm3;
