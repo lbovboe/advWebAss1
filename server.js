@@ -1,20 +1,14 @@
 "use strict";
-const http = require('http');
-const qs = require('querystring');
-const url = require('url');
-const version = 'L4E4';
 
-function startServer(port,route,handle){
-    function onRequest(request,response){
-        let parsedUrl = url.parse(request.url);
-        let path = parsedUrl.pathname;
-
-        console.log(request.socket.remoteAddress + '|' +path + '|' + parsedUrl.query);
-        route(path,handle,request,response);
-    }
-
-    let server = http.createServer(onRequest);
-    server.listen(port);
+var http = require("http");
+var url = require("url");
+function startServer(route, handle){
+   function onRequest(request, response) {
+      var pathname = url.parse(request.url).pathname;
+      console.log("Request for " + pathname + " received.");
+      route(handle, pathname, request, response);
+  }
+  http.createServer(onRequest).listen(41125);
+  console.log("Server has started.");
 }
-
 exports.startServer = startServer;

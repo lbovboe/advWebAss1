@@ -1,20 +1,14 @@
-const exec = require("child_process").exec;
-
 const fs = require("fs");
 
-function writeHeaders(response, code) {
-  response.writeHead(code, { "Content-Type": "text/html" });
-}
-
 function reqStart(request, response) {
-  var statusCode = 200;
+  
   function onFileLoad(err, fileData) {
-    writeHeaders(response, statusCode);
+    response.writeHead(200, { "Content-Type": "text/html" });
     response.write(fileData);
     response.end();
   }
   console.log("request start was called");
-  fs.readFile("start.html", onFileLoad);
+  fs.readFile("client/index.html", onFileLoad);
 }
 
 function reqUpload(request, response) {
