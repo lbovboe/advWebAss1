@@ -18,6 +18,7 @@ handle["/upload"] = requestHandlers.reqUpload;
 handle["/show"] = requestHandlers.reqShow;
 handle["/style"] = requestHandlers.reqStyle;
 handle["/csv"] = requestHandlers.reqCsv;
+handle["/searchInfo"] = requestHandlers.reqSearchInfo;
 // image for background
 handle["/bgImg"] = requestHandlers.reqBg;
 

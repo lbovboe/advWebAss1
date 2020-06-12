@@ -54,7 +54,9 @@ function reqCsv(request, response) {
         .fromFile("./student.csv")
         .then((student) => {
           student.push(formdata);
-          var csv = JSONToCSV(student, { fields: ["studentID", "fname","lname","age","gender","degree"] });
+          var csv = JSONToCSV(student, {
+            fields: ["studentID", "fname", "lname", "age", "gender", "degree"],
+          });
           fs.writeFileSync("./student.csv", csv);
         });
     });
@@ -62,6 +64,49 @@ function reqCsv(request, response) {
   response.writeHead(200, { "Content-Type": "text/html" });
   response.write("Record updated to student.csv ! <br/>");
   response.end();
+}
+function reqSearchInfo(request, response) {
+  console.log("request upload eas called");
+  if (request.method == "GET") {
+    //return reqStart(request, response);
+    var q = url.parse(request.url, true).query;
+    console.log(q);
+  } else if (request.method == "POST") {
+    var data = "";
+    request.on("data", function (chunk) {
+      data += chunk;
+    });
+    request.on("end", function () {
+      var formdata = querystring.parse(data);
+
+      console.log(typeof formdata);
+      console.log(formdata);
+      var arr = Object.entries(formdata);
+      console.log(arr[0][1]);
+      var searchDegree = arr[0][1];
+      CSVToJSON()
+        .fromFile("student.csv")
+        .then((student) => {
+          // users is a JSON array
+          // log the JSON array
+          //console.log(student);
+          //console.log(student.indexOf("CAI"));
+          var index = student.findIndex(function (info, index) {
+            if (info.degree === searchDegree)
+              var result = JSON.stringify(student[index]);
+            console.log(result);
+          });
+          //console.log(index);
+          // console.log(student[index]);
+        })
+        .catch((err) => {
+          // log error if any
+          console.log(err);
+        });
+
+      response.end();
+    });
+  }
 }
 function reqDetail(request, response) {
   console.log("Request handler 'detail' was called.");
@@ -107,7 +152,8 @@ function reqForm3(request, response) {
 exports.reqShow = reqShow;
 exports.reqStart = reqStart;
 exports.reqUpload = reqUpload;
-exports.reqCsv= reqCsv;
+exports.reqCsv = reqCsv;
+exports.reqSearchInfo = reqSearchInfo;
 exports.reqDetail = reqDetail;
 exports.reqSearch = reqSearch;
 exports.reqUploadPage = reqUploadPage;
