@@ -59,6 +59,8 @@ function reqCsv(request, response) {
         });
     });
   }
+  response.writeHead(200, { "Content-Type": "text/html" });
+  response.write("Record updated to student.csv ! <br/>");
   response.end();
 }
 function reqDetail(request, response) {
