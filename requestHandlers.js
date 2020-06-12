@@ -83,7 +83,8 @@ function reqSearchInfo(request, response) {
       console.log(formdata);
       var arr = Object.entries(formdata);
       console.log(arr[0][1]);
-      var searchDegree = arr[0][1];
+      var searchDegree = arr[0][1].toLowerCase();
+      response.writeHead(200, { "Content-Type": "text/plain" });
       CSVToJSON()
         .fromFile("student.csv")
         .then((student) => {
@@ -92,10 +93,14 @@ function reqSearchInfo(request, response) {
           //console.log(student);
           //console.log(student.indexOf("CAI"));
           var index = student.findIndex(function (info, index) {
-            if (info.degree === searchDegree)
+            if (info.degree === searchDegree) {
               var result = JSON.stringify(student[index]);
-            console.log(result);
+              console.log(result);
+              
+              response.write(result);
+            }
           });
+          response.end();
           //console.log(index);
           // console.log(student[index]);
         })
@@ -103,8 +108,6 @@ function reqSearchInfo(request, response) {
           // log error if any
           console.log(err);
         });
-
-      response.end();
     });
   }
 }
