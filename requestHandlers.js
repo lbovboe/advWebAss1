@@ -4,13 +4,9 @@ var querystring = require("querystring");
 var fs = require("fs");
 var formidable = require("formidable");
 function reqStart(request, response) {
-  function onFileLoad(err, fileData) {
-    response.writeHead(200, { "Content-Type": "text/html" });
-    response.write(fileData);
-    response.end();
-  }
-  console.log("request start was called");
-  fs.readFile("index.html", onFileLoad);
+  console.log("Request handler 'start' was called.");
+  response.writeHead(200, { "Content-Type": "text/html" });
+  fs.createReadStream("./index.html","utf-8").pipe(response);
 }
 function reqUpload(request, response) {
   console.log("Request handler 'upload' was called.");

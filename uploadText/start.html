@@ -6,9 +6,20 @@
     <title>Document</title>
   </head>
   <body>
-    <form action="/upload" method="post">
-      <textarea name="text" cols="20" rows="20"></textarea>
-      <input type="submit" value="submit text" />
+    <form action="/upload" method="POST" >
+      <div class="box">
+        <div>
+          <label for="studentID">Student ID</label>
+          <input type="text" name="studentID" id="studentID" required />
+        </div>
+        <div>
+          <label for="fname">First Name</label>
+          <input type="text" name="fname" id="fname" required />
+        </div>
+        
+        <button type="reset" id="reset">Reset</button>
+        <button type="submit" id="submit">Submit</button>
+      </div>
     </form>
   </body>
 </html>
