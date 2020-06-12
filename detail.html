@@ -33,7 +33,7 @@
 
     <!-- Form for entering details  -->
 
-    <form action="result.html" method="GET" enctype="multipart/form-data">
+    <form action="/csv" method="POST" >
       <div class="box">
         <div>
           <label for="studentID">Student ID</label>
@@ -49,7 +49,7 @@
         </div>
         <div>
           <label for="age">Student Age</label>
-          <input type="number" name="age" id="age" min="1" max="200" step="5" />
+          <input type="text" name="age" id="age"/>
         </div>
         <div class="gender">
           <label for="male">Male</label>

@@ -3,10 +3,13 @@
 var querystring = require("querystring");
 var fs = require("fs");
 var formidable = require("formidable");
+const CSVToJSON = require("csvtojson");
+const JSONToCSV = require("json2csv").parse;
+
 function reqStart(request, response) {
   console.log("Request handler 'start' was called.");
   response.writeHead(200, { "Content-Type": "text/html" });
-  fs.createReadStream("./index.html","utf-8").pipe(response);
+  fs.createReadStream("./index.html", "utf-8").pipe(response);
 }
 function reqUpload(request, response) {
   console.log("Request handler 'upload' was called.");
@@ -33,6 +36,31 @@ function reqShow(request, response) {
   response.writeHead(200, { "Content-Type": "image/png" });
   fs.createReadStream("./test.png").pipe(response);
 }
+function reqCsv(request, response) {
+  console.log("request upload eas called");
+  if (request.method == "GET") {
+    //return reqStart(request, response);
+    var q = url.parse(request.url, true).query;
+    console.log(q);
+  } else if (request.method == "POST") {
+    var data = "";
+    request.on("data", function (chunk) {
+      data += chunk;
+    });
+    request.on("end", function () {
+      var formdata = querystring.parse(data);
+      console.log(formdata);
+      CSVToJSON()
+        .fromFile("./student.csv")
+        .then((student) => {
+          student.push(formdata);
+          var csv = JSONToCSV(student, { fields: ["studentID", "fname","lname","age","gender","degree"] });
+          fs.writeFileSync("./student.csv", csv);
+        });
+    });
+  }
+  response.end();
+}
 function reqDetail(request, response) {
   console.log("Request handler 'detail' was called.");
   response.writeHead(200, { "Content-Type": "text/html" });
@@ -49,27 +77,27 @@ function reqUploadPage(request, response) {
   fs.createReadStream("./uploadPage.html").pipe(response);
 }
 
-function reqStyle(request,response){
+function reqStyle(request, response) {
   console.log("Request handler 'style' was called.");
   response.writeHead(200, { "Content-Type": "text/css" });
   fs.createReadStream("./style.css").pipe(response);
 }
-function reqBg(request,response){
+function reqBg(request, response) {
   console.log("Request handler 'bgImg' was called.");
   response.writeHead(200, { "Content-Type": "image/png" });
   fs.createReadStream("./bgImg.png").pipe(response);
 }
-function reqForm1(request,response){
+function reqForm1(request, response) {
   console.log("Request handler 'form1 ' for css was called.");
   response.writeHead(200, { "Content-Type": "text/css" });
   fs.createReadStream("./form1.css").pipe(response);
 }
-function reqForm2(request,response){
+function reqForm2(request, response) {
   console.log("Request handler 'form1 ' for css was called.");
   response.writeHead(200, { "Content-Type": "text/css" });
   fs.createReadStream("./form2.css").pipe(response);
 }
-function reqForm3(request,response){
+function reqForm3(request, response) {
   console.log("Request handler 'form1 ' for css was called.");
   response.writeHead(200, { "Content-Type": "text/css" });
   fs.createReadStream("./form3.css").pipe(response);
@@ -77,6 +105,7 @@ function reqForm3(request,response){
 exports.reqShow = reqShow;
 exports.reqStart = reqStart;
 exports.reqUpload = reqUpload;
+exports.reqCsv= reqCsv;
 exports.reqDetail = reqDetail;
 exports.reqSearch = reqSearch;
 exports.reqUploadPage = reqUploadPage;
