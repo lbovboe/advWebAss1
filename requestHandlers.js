@@ -84,6 +84,7 @@ function reqSearchInfo(request, response) {
       var arr = Object.entries(formdata);
       console.log(arr[0][1]);
       var searchDegree = arr[0][1].toLowerCase();
+      var count = 0;
       response.writeHead(200, { "Content-Type": "text/plain" });
       CSVToJSON()
         .fromFile("student.csv")
@@ -96,10 +97,15 @@ function reqSearchInfo(request, response) {
             if (info.degree === searchDegree) {
               var result = JSON.stringify(student[index]);
               console.log(result);
-              
+              count ++;
               response.write(result);
             }
           });
+          if(count == 0){
+            response.write("There's no result found!");
+          }else{
+            response.write("\n total number of matches " + count);
+          }
           response.end();
           //console.log(index);
           // console.log(student[index]);
